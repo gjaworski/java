@@ -13,6 +13,9 @@
 
     <modules>
         <module>java-concurrency</module>
+        <module>java-network</module>
+        <module>java-streams</module>
+        <module>java-properties</module>
     </modules>
 
     <developers>
@@ -28,5 +31,42 @@
     <scm>
         <connection>https://github.com/gjaworski/java.git</connection>
     </scm>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <slf4j.version>1.7.25</slf4j.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
